@@ -3,10 +3,9 @@ package com.example.weather_project.model.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
 
 @Entity(tableName = "User_table")
-data class User_Entity(
+data class UserEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "user_id")
     val user_id : Long,
@@ -15,7 +14,7 @@ data class User_Entity(
     val user_name : String,
 
     @ColumnInfo(name = "user_birthdate")
-    val user_birthdate : Date,
+    val user_birthdate : String,
 
     @ColumnInfo(name = "user_city")
     val user_city : String,

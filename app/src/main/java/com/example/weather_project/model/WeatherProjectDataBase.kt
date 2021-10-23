@@ -4,20 +4,19 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.weather_project.model.dao.User_Dao
-import com.example.weather_project.model.entity.User_Entity
-import java.security.AccessControlContext
+import com.example.weather_project.model.dao.UserDao
+import com.example.weather_project.model.entity.UserEntity
 
-@Database(entities = [User_Entity::class], version = 1, exportSchema = false)
-abstract class Weather_Project_Data_Base : RoomDatabase() {
+@Database(entities = [UserEntity::class], version = 1, exportSchema = false)
+abstract class WeatherProjectDataBase : RoomDatabase() {
 
-    abstract fun user_dao(): User_Dao
+    abstract fun user_dao(): UserDao
 
     companion object {
         @Volatile
-        private var INSTANCE: Weather_Project_Data_Base? = null
+        private var INSTANCE: WeatherProjectDataBase? = null
 
-        fun get_Data_Base(context: Context): Weather_Project_Data_Base {
+        fun get_Data_Base(context: Context): WeatherProjectDataBase {
             val tempInstance = INSTANCE
 
             if (tempInstance != null) {
@@ -27,7 +26,7 @@ abstract class Weather_Project_Data_Base : RoomDatabase() {
             synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    Weather_Project_Data_Base::class.java,
+                    WeatherProjectDataBase::class.java,
                     "Weather_Project_Data_Base"
                 ).build()
                 INSTANCE = instance

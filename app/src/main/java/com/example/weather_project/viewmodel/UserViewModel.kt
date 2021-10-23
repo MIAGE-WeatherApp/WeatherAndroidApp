@@ -4,36 +4,38 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.weather_project.model.Weather_Project_Data_Base
-import com.example.weather_project.model.entity.User_Entity
-import com.example.weather_project.model.repository.User_Repository
+import com.example.weather_project.model.WeatherProjectDataBase
+import com.example.weather_project.model.entity.UserEntity
+import com.example.weather_project.model.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class User_ViewModel(application: Application) : AndroidViewModel(application) {
+class UserViewModel(
+    application: Application
+) : AndroidViewModel(application) {
 
-    private val read_users: LiveData<List<User_Entity>>
-    private val user_repository: User_Repository
+    private val read_users: LiveData<List<UserEntity>>
+    private val user_repository: UserRepository
 
     init {
-        val user_dao = Weather_Project_Data_Base.get_Data_Base(application).user_dao()
-        user_repository = User_Repository(user_dao)
+        val user_dao = WeatherProjectDataBase.get_Data_Base(application).user_dao()
+        user_repository = UserRepository(user_dao)
         read_users = user_repository.users
     }
 
-    fun add_user(user: User_Entity) {
+    fun add_user(user: UserEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             user_repository.add_User(user)
         }
     }
 
-    fun set_user(user: User_Entity) {
+    fun set_user(user: UserEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             user_repository.set_User(user)
         }
     }
 
-    fun delete_user(user: User_Entity) {
+    fun delete_user(user: UserEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             user_repository.delete_User(user)
         }
@@ -44,4 +46,6 @@ class User_ViewModel(application: Application) : AndroidViewModel(application) {
             user_repository.users
         }
     }
+
+
 }
