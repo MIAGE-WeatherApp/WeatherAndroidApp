@@ -19,5 +19,6 @@ en M1 MIAGE APP à l'Université de Paris (Descartes).
 ## Documentation
 
 L'ensemble de la documentation :
-* Ce présent README.md
+* **WeatherAndroidApp/app/src/main/java/com/example/weather_project/** : il s'agit du chemin où se trouve l'ensemble de nos classes.
+* Ce présent README.md.
 * Le diagramme UML dans le dossier "documentation" du projet.
