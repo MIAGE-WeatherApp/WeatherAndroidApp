@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.SignupActivity">
+
+    <TextView
+        android:id="@+id/LogupTitleId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inscription"
+        tools:layout_editor_absoluteX="169dp"
+        tools:layout_editor_absoluteY="54dp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/LogupTxt1Id"
+        android:layout_width="330dp"
+        android:layout_height="37dp"
+        android:hint="hint"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="158dp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/LogupTxt2Id"
+        android:layout_width="330dp"
+        android:layout_height="37dp"
+        android:hint="hint"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="212dp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/LogupTxt3Id"
+        android:layout_width="330dp"
+        android:layout_height="37dp"
+        android:hint="hint"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="267dp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/LogupTxt4Id"
+        android:layout_width="330dp"
+        android:layout_height="37dp"
+        android:hint="hint"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="325dp" />
+
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RadioButton"
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="394dp" />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RadioButton"
+        tools:layout_editor_absoluteX="227dp"
+        tools:layout_editor_absoluteY="394dp" />
+
+    <Button
+        android:id="@+id/LogupBtnId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="142dp"
+        tools:layout_editor_absoluteY="490dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
