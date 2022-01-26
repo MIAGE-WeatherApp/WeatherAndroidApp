@@ -1,4 +1,4 @@
-package com.example.weather_project.viewmodel.weathercomponent
+package com.example.weather_project.viewmodel.weather.weathercomponent
 
 import androidx.annotation.IntRange
 import androidx.annotation.NonNull
@@ -21,7 +21,6 @@ class Temperature(
     @NonNull
     @IntRange(from = -100, to = 100)
     val _felt_value: Int, // Datatype
-
 ) {
 
 

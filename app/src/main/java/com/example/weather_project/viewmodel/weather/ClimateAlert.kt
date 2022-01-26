@@ -1,4 +1,4 @@
-package com.example.weather_project.viewmodel
+package com.example.weather_project.viewmodel.weather
 
 import androidx.annotation.NonNull
 

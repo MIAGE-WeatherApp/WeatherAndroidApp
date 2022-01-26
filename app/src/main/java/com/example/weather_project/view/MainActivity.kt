@@ -6,8 +6,6 @@ import android.content.pm.PackageManager
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
@@ -19,13 +17,15 @@ class MainActivity : AppCompatActivity() {
     val LOCAL_PERMISSION_ID = 1010
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mainBtnId.setOnClickListener {
-            Log.d("Debug:",CheckPermission().toString())
-            Log.d("Debug:",isLocationEnabled().toString())
+
             RequestPermission()
+
             if(!CheckPermission() || !isLocationEnabled()){
                 Toast.makeText(this@MainActivity, "Activez la géolocalisation et relancez l'application", Toast.LENGTH_LONG).show()
             }

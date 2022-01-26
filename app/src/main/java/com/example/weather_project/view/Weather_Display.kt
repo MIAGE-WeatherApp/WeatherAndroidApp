@@ -55,13 +55,13 @@ class Weather_Display : AppCompatActivity() {
         fusedLocationProviderClient.lastLocation.addOnCompleteListener { task ->
             var location: Location? = task.result
             if (location == null) {
-                  NewLocationData()
+                NewLocationData()
             } else {
 
                 weatherTitleId.text = getCityName(location.latitude, location.longitude)
 
                 getCurrentWeatherbyLocation(location.latitude, location.longitude)
-                getOneCallAPI(location.latitude,location.longitude)
+                getOneCallAPI(location.latitude, location.longitude)
                 getCurrentWeatherAPI(getCityName(location.latitude, location.longitude))
                 searchByCity()
             }
@@ -80,7 +80,7 @@ class Weather_Display : AppCompatActivity() {
         Log.d("SARAH :", "CHUI LA2.0")
         Log.d(
             "Debug:",
-            "J'habiiiite aaaaa: " + cityName + " ; Dans les pays des rêves :" + countryName
+            "J'habiiiite aaaaa: $cityName ; Dans les pays des rêves :$countryName"
         )
         return cityName
     }
@@ -94,9 +94,11 @@ class Weather_Display : AppCompatActivity() {
         locationRequest.fastestInterval = 0
         locationRequest.numUpdates = 1
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-        fusedLocationProviderClient!!.requestLocationUpdates(
-            locationRequest, locationCallback, Looper.myLooper()
-        )
+        Looper.myLooper()?.let {
+            fusedLocationProviderClient!!.requestLocationUpdates(
+                locationRequest, locationCallback, it
+            )
+        }
     }
 
     private val locationCallback = object : LocationCallback() {
@@ -111,112 +113,115 @@ class Weather_Display : AppCompatActivity() {
         }
     }
 
-    fun getOneCallAPI(lat:Double, long:Double):JSONObject{
+    fun getOneCallAPI(lat: Double, long: Double): JSONObject {
         var apiKey = "d2c3d372129d6b440e76ab9b8fadc9f3"
         var apiURL = ""
-        apiURL =  "https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$long&exclude=minutely,hourly&appid=$apiKey"
+        apiURL =
+            "https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$long&exclude=minutely,hourly&appid=$apiKey"
         var apiRead = URL(apiURL).readText()
         val apiOnJson = JSONObject(apiRead)
         return apiOnJson
     }
 
-    fun getCurrentWeatherAPI(cityName:String):JSONObject{
+    fun getCurrentWeatherAPI(cityName: String): JSONObject {
         var apiKey = "d2c3d372129d6b440e76ab9b8fadc9f3"
         var apiURL = ""
-        apiURL =  "https://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$apiKey"
+        apiURL = "https://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$apiKey"
         var apiRead = URL(apiURL).readText()
         val apiOnJson = JSONObject(apiRead)
         return apiOnJson
     }
 
-    fun getCityTemp(cityName: String):Int{
+    fun getCityTemp(cityName: String): Int {
         val main = getCurrentWeatherAPI(cityName).getJSONObject("main")
         val tempCity = (main.getInt("temp") - 273)
         return tempCity
     }
 
-    fun getCityClimat(cityName: String):String{
+    fun getCityClimat(cityName: String): String {
         val weather = getCurrentWeatherAPI(cityName).getJSONArray("weather").getJSONObject(0)
         val weatherState = weather.getString("description")
         return weatherState
     }
 
-    fun getCityIconClimat(cityName: String):String{
+    fun getCityIconClimat(cityName: String): String {
         val weather = getCurrentWeatherAPI(cityName).getJSONArray("weather").getJSONObject(0)
         val iconCity = weather.getString("icon")
         val urltoIcon = "https://openweathermap.org/img/w/$iconCity.png"
         return urltoIcon
     }
 
-    fun getCityFeelsTemp(cityName: String):Double{
+    fun getCityFeelsTemp(cityName: String): Double {
         val main = getCurrentWeatherAPI(cityName).getJSONObject("main")
         val feelslike = (main.getDouble("feels_like") - 273)
         return feelslike
     }
 
-    fun getCityHumidity(cityName: String):Int{
+    fun getCityHumidity(cityName: String): Int {
         val main = getCurrentWeatherAPI(cityName).getJSONObject("main")
         val humiditycity = (main.getInt("humidity"))
         return humiditycity
     }
 
-    fun getCityWind(cityName: String):Double{
+    fun getCityWind(cityName: String): Double {
         val wind = getCurrentWeatherAPI(cityName).getJSONObject("wind")
         val windSpeed = wind.getDouble("speed")
         return windSpeed
     }
 
-    fun getAirQualityAPI(lat: Double, long: Double):JSONObject{
+    fun getAirQualityAPI(lat: Double, long: Double): JSONObject {
         val apiKey = "d2c3d372129d6b440e76ab9b8fadc9f3"
         var apiURL = ""
-        apiURL =  "https://api.openweathermap.org/data/2.5/air_pollution?lat=$lat&lon=$long&appid=$apiKey"
+        apiURL =
+            "https://api.openweathermap.org/data/2.5/air_pollution?lat=$lat&lon=$long&appid=$apiKey"
         var apiRead = URL(apiURL).readText()
         val apiOnJson = JSONObject(apiRead)
         return apiOnJson
     }
+
     //EN KELVIN DONC VOIR COMMENT ON UTILISE LES CELSIUS OU KELVIN OU FAHRENHEIT
-    fun getGeoTemp(lat:Double, long:Double):Int{
-        val currentInfo = getOneCallAPI(lat,long).getJSONObject("current")
+    fun getGeoTemp(lat: Double, long: Double): Int {
+        val currentInfo = getOneCallAPI(lat, long).getJSONObject("current")
         val tempCurrent = (currentInfo.getInt("temp") - 273)
         return tempCurrent
     }
 
-    fun getGeoClimatState(lat:Double, long: Double):String{
-        val currentInfo = getOneCallAPI(lat,long).getJSONObject("current")
+    fun getGeoClimatState(lat: Double, long: Double): String {
+        val currentInfo = getOneCallAPI(lat, long).getJSONObject("current")
         val weather = currentInfo.getJSONArray("weather").getJSONObject(0)
         val weatherState = weather.getString("description")
         return weatherState
     }
 
-    fun getGeoFeels(lat:Double, long: Double):String{
-        val currentInfo = getOneCallAPI(lat,long).getJSONObject("current")
+    fun getGeoFeels(lat: Double, long: Double): String {
+        val currentInfo = getOneCallAPI(lat, long).getJSONObject("current")
         var feelsCurrent = (currentInfo.getDouble("feels_like") - 273.75).toString()
         feelsCurrent = (BigDecimal(feelsCurrent).setScale(2, RoundingMode.HALF_EVEN)).toString()
         return feelsCurrent
     }
 
-    fun getGeoIconURL(lat:Double, long:Double):String{
-        val currentInfo = getOneCallAPI(lat,long).getJSONObject("current")
+    fun getGeoIconURL(lat: Double, long: Double): String {
+        val currentInfo = getOneCallAPI(lat, long).getJSONObject("current")
         val weather = currentInfo.getJSONArray("weather").getJSONObject(0)
         val iconString = weather.getString("icon")
         val iconURL = "https://openweathermap.org/img/w/$iconString.png"
         return iconURL
     }
 
-    fun getGeoHumidity(lat:Double, long:Double):String{
-        val currentInfo = getOneCallAPI(lat,long).getJSONObject("current")
+    fun getGeoHumidity(lat: Double, long: Double): String {
+        val currentInfo = getOneCallAPI(lat, long).getJSONObject("current")
         val humidity = currentInfo.getString("humidity")
         return humidity
     }
 
-    fun getGeoWind(lat:Double, long:Double):Double{
-        val currentInfo = getOneCallAPI(lat,long).getJSONObject("current")
+    fun getGeoWind(lat: Double, long: Double): Double {
+        val currentInfo = getOneCallAPI(lat, long).getJSONObject("current")
         val windSpeed = currentInfo.getDouble("wind_speed")
         return windSpeed
     }
 
-    fun getGeoAirQuality(lat:Double, long: Double):Int{
-        val airInfo = getAirQualityAPI(lat,long)
+    fun getGeoAirQuality(lat: Double, long: Double): Int {
+        val airInfo = getAirQualityAPI(lat, long)
         val list = airInfo.getJSONArray("list").getJSONObject(0).getJSONObject("main")
         var aqiGeo = list.getInt("aqi")
         return aqiGeo
@@ -261,7 +266,8 @@ class Weather_Display : AppCompatActivity() {
         weatherWindId.text = windSpeed.toString() + " km/h"
 
         //Pour la qualité de l'air
-        weatherQualityId.text = lat?.let { long?.let { it1 -> getGeoAirQuality(it, it1).toString() } }
+        weatherQualityId.text =
+            lat?.let { long?.let { it1 -> getGeoAirQuality(it, it1).toString() } }
 
         //Notifications à venir en fonction
 
@@ -269,71 +275,65 @@ class Weather_Display : AppCompatActivity() {
 
     private fun searchByCity() {
 
-             weatherSearchId.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                override fun onQueryTextSubmit(query: String?): Boolean {
+        weatherSearchId.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
 
-                 try{
-                        //GET TEMPERATURE BY CITY
-                        val tempCity = query?.let { getCityTemp(it) }
-                        weatherTempId.text = "$tempCity°C"
+                try {
+                    //GET TEMPERATURE BY CITY
+                    val tempCity = query?.let { getCityTemp(it) }
+                    weatherTempId.text = "$tempCity°C"
 
-                        //GET CITYNAME
-                        val cityName = query
-                        if (cityName != null) {
-                            weatherTitleId.text = cityName.uppercase()
-                        }
-                        //GET ICONCLIMAT
-                        Glide.with(this@Weather_Display).load(query?.let { getCityIconClimat(it) })
-                            .into(weatherStateId)
+                    //GET CITYNAME
+                    val cityName = query
+                    if (cityName != null) {
+                        weatherTitleId.text = cityName.uppercase()
+                    }
+                    //GET ICONCLIMAT
+                    Glide.with(this@Weather_Display).load(query?.let { getCityIconClimat(it) })
+                        .into(weatherStateId)
 
-                        //GET CLIMAT BY CITY
-                        val weatherState = query?.let { getCityClimat(it) }
-                        if (weatherState != null) {
-                            weatherDescriptionId.text = weatherState.uppercase()
-                        }
-                        //GET FEELSTEMP BY CITY
-                        val feelslike = query?.let { getCityFeelsTemp(it) }
-                        weatherFeltId.text = (feelslike?.let {
-                            BigDecimal(it).setScale(
-                                2,
-                                RoundingMode.HALF_EVEN
-                            )
-                        }).toString() + "°C"
+                    //GET CLIMAT BY CITY
+                    val weatherState = query?.let { getCityClimat(it) }
+                    if (weatherState != null) {
+                        weatherDescriptionId.text = weatherState.uppercase()
+                    }
+                    //GET FEELSTEMP BY CITY
+                    val feelslike = query?.let { getCityFeelsTemp(it) }
+                    weatherFeltId.text = (feelslike?.let {
+                        BigDecimal(it).setScale(
+                            2,
+                            RoundingMode.HALF_EVEN
+                        )
+                    }).toString() + "°C"
 
-                        //GET FEELSTEMP BY CITY
-                        val humidityCity = query?.let { getCityHumidity(it) }
-                        if (humidityCity != null) {
-                            weatherHumidityId.text = "$humidityCity %"
-                        }
+                    //GET FEELSTEMP BY CITY
+                    val humidityCity = query?.let { getCityHumidity(it) }
+                    if (humidityCity != null) {
+                        weatherHumidityId.text = "$humidityCity %"
+                    }
 
-                        val windspeedCity = query?.let { getCityWind(it) }
-                        if (windspeedCity != null) {
-                            weatherWindId.text = "$windspeedCity km/h"
-                        }
-                   } catch (MalformedURLException : IOException){
-                     Toast.makeText(this@Weather_Display, "Votre ville n'existe pas !", Toast.LENGTH_LONG).show()
-                   }
-                    return false
+                    val windspeedCity = query?.let { getCityWind(it) }
+                    if (windspeedCity != null) {
+                        weatherWindId.text = "$windspeedCity km/h"
+                    }
+                } catch (MalformedURLException: IOException) {
+                    Toast.makeText(
+                        this@Weather_Display,
+                        "Votre ville n'existe pas !",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
+                return false
+            }
 
-                override fun onQueryTextChange(newText: String?): Boolean {
+            override fun onQueryTextChange(newText: String?): Boolean {
 
-                    //NOT YET IMPLEMENTED
-                     return false
-                }
+                //NOT YET IMPLEMENTED
+                return false
+            }
 
-            })
+        })
 
     }
-
-
-
-
-
-
-
-
-
-
 
 }
