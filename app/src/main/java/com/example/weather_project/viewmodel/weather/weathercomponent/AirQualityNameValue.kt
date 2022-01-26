@@ -1,4 +1,4 @@
-package com.example.weather_project.viewmodel.weathercomponent
+package com.example.weather_project.viewmodel.weather.weathercomponent
 
 enum class AirQualityNameValue {
     BON,

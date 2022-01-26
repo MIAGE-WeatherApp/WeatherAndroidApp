@@ -1,4 +1,4 @@
-package com.example.weather_project.viewmodel.weathercomponent
+package com.example.weather_project.viewmodel.weather.weathercomponent
 
 import androidx.annotation.IntRange
 import androidx.annotation.NonNull

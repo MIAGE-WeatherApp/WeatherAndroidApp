@@ -1,4 +1,4 @@
-package com.example.weather_project.viewmodel.weathercomponent.category
+package com.example.weather_project.viewmodel.weather.weathercomponent.category
 
 import androidx.annotation.FloatRange
 import androidx.annotation.NonNull
