@@ -11,63 +11,82 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Inscription"
-        tools:layout_editor_absoluteX="169dp"
-        tools:layout_editor_absoluteY="54dp" />
+        app:layout_constraintBottom_toTopOf="@+id/LogupTxt1Id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/LogupTxt1Id"
         android:layout_width="330dp"
         android:layout_height="37dp"
+        android:layout_marginBottom="24dp"
         android:hint="hint"
-        tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="158dp" />
+        app:layout_constraintBottom_toTopOf="@+id/LogupTxt2Id"
+        tools:layout_editor_absoluteX="40dp" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/LogupTxt2Id"
         android:layout_width="330dp"
         android:layout_height="37dp"
+        android:layout_marginBottom="20dp"
         android:hint="hint"
-        tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="212dp" />
+        app:layout_constraintBottom_toTopOf="@+id/LogupTxt3Id"
+        tools:layout_editor_absoluteX="38dp" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/LogupTxt3Id"
         android:layout_width="330dp"
         android:layout_height="37dp"
+        android:layout_marginBottom="16dp"
         android:hint="hint"
-        tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="267dp" />
+        app:layout_constraintBottom_toTopOf="@+id/LogupTxt4Id"
+        tools:layout_editor_absoluteX="38dp" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/LogupTxt4Id"
         android:layout_width="330dp"
         android:layout_height="37dp"
+        android:layout_marginBottom="112dp"
         android:hint="hint"
-        tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="325dp" />
+        app:layout_constraintBottom_toTopOf="@+id/LogupBtnId"
+        tools:layout_editor_absoluteX="38dp" />
 
     <RadioButton
         android:id="@+id/radioButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RadioButton"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="394dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/radioButton2"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.472" />
 
     <RadioButton
         android:id="@+id/radioButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RadioButton"
-        tools:layout_editor_absoluteX="227dp"
-        tools:layout_editor_absoluteY="394dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.804"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.472" />
 
     <Button
         android:id="@+id/LogupBtnId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="284dp"
         android:text="Button"
-        tools:layout_editor_absoluteX="142dp"
-        tools:layout_editor_absoluteY="490dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
