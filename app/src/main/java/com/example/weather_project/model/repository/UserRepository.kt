@@ -6,14 +6,20 @@ import com.example.weather_project.model.entity.UserEntity
 
 class UserRepository(private val user_dao: UserDao) {
 
-    suspend fun add_User(user_entity: UserEntity): Long = user_dao.add_User(user_entity)
+    suspend fun addUser(user_entity: UserEntity): Long = user_dao.addUser(user_entity)
 
-    suspend fun set_User(user_entity: UserEntity): Int = user_dao.set_User(user_entity)
+    suspend fun addUserList(users: List<UserEntity>): List<Long> = user_dao.insertAllUser(users)
 
-    suspend fun delete_User(user_entity: UserEntity): Int = user_dao.delete_User(user_entity)
+    suspend fun setUser(user_entity: UserEntity): Int = user_dao.setUser(user_entity)
 
-    val users: LiveData<List<UserEntity>> = user_dao.get_Users()
+    suspend fun deleteUser(user_entity: UserEntity): Int = user_dao.deleteUser(user_entity)
 
-    suspend fun get_User_By_User_id(user_id: Long): UserEntity? = user_dao.get_User_By_User_Id(user_id)
+    val users: LiveData<List<UserEntity>> = user_dao.getUsers()
+
+    suspend fun getUserByUserId(user_id: Long): UserEntity? =
+        user_dao.getUserByUserId(user_id)
+
+    fun getUserBySignInVerify(user_login: String, user_password: String): UserEntity? =
+        user_dao.getUserBySignInVerify(user_login, user_password)
 
 }

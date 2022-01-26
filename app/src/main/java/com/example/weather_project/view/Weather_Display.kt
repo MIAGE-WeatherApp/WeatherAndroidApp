@@ -31,50 +31,57 @@ class Weather_Display : AppCompatActivity() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         getLastLocation()
     }
-    @SuppressLint("MissingPermission") //Change this srh
-    fun getLastLocation(){
-        fusedLocationProviderClient.lastLocation.addOnCompleteListener{task->
-            var location: Location? = task.result
-            if(location == null){
-                NewLocationData()
-            }else{
-                Log.d("Debug:" ,"Your Location:"+ location.longitude)
-                textview3.text = getCityName(location.latitude,location.longitude)
-                }
-                    }
 
+    @SuppressLint("MissingPermission") //Change this srh
+    fun getLastLocation() {
+        fusedLocationProviderClient.lastLocation.addOnCompleteListener { task ->
+            var location: Location? = task.result
+            if (location == null) {
+                NewLocationData()
+            } else {
+                Log.d("Debug:", "Your Location:" + location.longitude)
+                textview3.text = getCityName(location.latitude, location.longitude)
+            }
+        }
     }
-    private fun getCityName(lat: Double,long: Double):String{
-        var cityName:String = ""
+
+    private fun getCityName(lat: Double, long: Double): String {
+        var cityName: String = ""
         var countryName = ""
         var geoCoder = Geocoder(this, Locale.getDefault())
-        var address = geoCoder.getFromLocation(lat,long,3)
+        var address = geoCoder.getFromLocation(lat, long, 3)
 
         cityName = address.get(0).locality
         countryName = address.get(0).countryName
-        Log.d("Debug:","Your City: " + cityName + " ; your Country " + countryName)
+        Log.d("Debug:", "Your City: " + cityName + " ; your Country " + countryName)
         return cityName
     }
 
-      @SuppressLint("MissingPermission")
-    fun NewLocationData(){
+    @SuppressLint("MissingPermission")
+    fun NewLocationData() {
         var locationRequest = com.google.android.gms.location.LocationRequest()
-        locationRequest.priority = com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY
+        locationRequest.priority =
+            com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY
         locationRequest.interval = 0
         locationRequest.fastestInterval = 0
         locationRequest.numUpdates = 1
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-        fusedLocationProviderClient!!.requestLocationUpdates(
-            locationRequest,locationCallback, Looper.myLooper()
-        )
+        Looper.myLooper()?.let {
+            fusedLocationProviderClient!!.requestLocationUpdates(
+                locationRequest, locationCallback, it
+            )
+        }
     }
 
-
-    private val locationCallback = object : LocationCallback(){
+    private val locationCallback = object : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult) {
             var lastLocation: Location = locationResult.lastLocation
-            Log.d("Debug:","your last last location: "+ lastLocation.longitude.toString())
-            textview3.text = "You Last Location is : Long: "+ lastLocation.longitude + " , Lat: " + lastLocation.latitude + "\n" + getCityName(lastLocation.latitude,lastLocation.longitude)
+            Log.d("Debug:", "your last last location: " + lastLocation.longitude.toString())
+            textview3.text =
+                "You Last Location is : Long: " + lastLocation.longitude + " , Lat: " + lastLocation.latitude + "\n" + getCityName(
+                    lastLocation.latitude,
+                    lastLocation.longitude
+                )
         }
     }
 
