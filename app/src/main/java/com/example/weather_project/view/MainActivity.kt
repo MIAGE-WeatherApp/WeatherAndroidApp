@@ -6,8 +6,7 @@ import android.content.pm.PackageManager
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import com.example.weather_project.R
@@ -18,20 +17,18 @@ class MainActivity : AppCompatActivity() {
     val LOCAL_PERMISSION_ID = 1010
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mainBtnId.setOnClickListener {
-            Log.d("Debug:",CheckPermission().toString())
-            Log.d("Debug:",isLocationEnabled().toString())
+
             RequestPermission()
-        }
-        window.decorView.apply {
-            // Hide both the navigation bar and the status bar.
-            // SYSTEM_UI_FLAG_FULLSCREEN is only available on Android 4.1 and higher, but as
-            // a general rule, you should design your app to hide the status bar whenever you
-            // hide the navigation bar.
-            systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN
+
+            if(!CheckPermission() || !isLocationEnabled()){
+                Toast.makeText(this@MainActivity, "Activez la géolocalisation et relancez l'application", Toast.LENGTH_LONG).show()
+            }
         }
 
         //Launch SignIn Activity in the Main One (changer les noms à voir)

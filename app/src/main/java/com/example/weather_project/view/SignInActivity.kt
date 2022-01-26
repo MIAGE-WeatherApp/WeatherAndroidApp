@@ -3,17 +3,17 @@ package com.example.weather_project.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.weather_project.R
+import kotlinx.android.synthetic.main.activity_sign_in.*
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.weather_project.R
 import com.example.weather_project.model.WeatherProjectDataBase
 import com.example.weather_project.model.repository.UserRepository
 import com.example.weather_project.resource.Status
 import com.example.weather_project.usecase.UsersUseCase
 import com.example.weather_project.viewmodel.signin.SignInViewModel
 import com.example.weather_project.viewmodel.signin.SignInViewModelFactory
-import kotlinx.android.synthetic.main.activity_sign_in.*
 
 
 class SignInActivity : AppCompatActivity() {
@@ -84,6 +84,4 @@ class SignInActivity : AppCompatActivity() {
             }
         })
     }
-
-
 }

@@ -17,6 +17,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.10840932117527863" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_weather_display.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.25" />
       </map>
     </option>
