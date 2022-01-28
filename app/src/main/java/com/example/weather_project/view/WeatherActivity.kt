@@ -28,7 +28,7 @@ import java.math.BigDecimal
 import java.math.RoundingMode
 
 
-class Weather_Display : AppCompatActivity() {
+class WeatherActivity : AppCompatActivity() {
 
     //Initializing variables related to Locations
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
@@ -41,12 +41,9 @@ class Weather_Display : AppCompatActivity() {
         //Permet de réaliser des requêtes http en parallèle
         val policy = ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
-
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         getLastLocation()
-
-        weatherSearchId.queryHint = "Search for a weather country"
-
+        weatherSearchId.queryHint = "Search for a city :)"
     }
 
 
@@ -59,7 +56,6 @@ class Weather_Display : AppCompatActivity() {
             } else {
 
                 weatherTitleId.text = getCityName(location.latitude, location.longitude)
-
                 getCurrentWeatherbyLocation(location.latitude, location.longitude)
                 getOneCallAPI(location.latitude, location.longitude)
                 getCurrentWeatherAPI(getCityName(location.latitude, location.longitude))
@@ -269,8 +265,6 @@ class Weather_Display : AppCompatActivity() {
         weatherQualityId.text =
             lat?.let { long?.let { it1 -> getGeoAirQuality(it, it1).toString() } }
 
-        //Notifications à venir en fonction
-
     }
 
     private fun searchByCity() {
@@ -286,10 +280,11 @@ class Weather_Display : AppCompatActivity() {
                     //GET CITYNAME
                     val cityName = query
                     if (cityName != null) {
-                        weatherTitleId.text = cityName.uppercase()
+                        weatherTitleId.text =
+                            cityName.replaceFirstChar { cityName.substring(0, 1).uppercase() }
                     }
                     //GET ICONCLIMAT
-                    Glide.with(this@Weather_Display).load(query?.let { getCityIconClimat(it) })
+                    Glide.with(this@WeatherActivity).load(query?.let { getCityIconClimat(it) })
                         .into(weatherStateId)
 
                     //GET CLIMAT BY CITY
@@ -299,12 +294,12 @@ class Weather_Display : AppCompatActivity() {
                     }
                     //GET FEELSTEMP BY CITY
                     val feelslike = query?.let { getCityFeelsTemp(it) }
-                    weatherFeltId.text = (feelslike?.let {
+                    weatherFeltId.text = ((feelslike?.let {
                         BigDecimal(it).setScale(
                             2,
                             RoundingMode.HALF_EVEN
                         )
-                    }).toString() + "°C"
+                    }).toString() + "°C")
 
                     //GET FEELSTEMP BY CITY
                     val humidityCity = query?.let { getCityHumidity(it) }
@@ -316,12 +311,15 @@ class Weather_Display : AppCompatActivity() {
                     if (windspeedCity != null) {
                         weatherWindId.text = "$windspeedCity km/h"
                     }
+
                 } catch (MalformedURLException: IOException) {
                     Toast.makeText(
-                        this@Weather_Display,
+                        this@WeatherActivity,
                         "Votre ville n'existe pas !",
                         Toast.LENGTH_LONG
                     ).show()
+
+
                 }
                 return false
             }
@@ -336,4 +334,6 @@ class Weather_Display : AppCompatActivity() {
 
     }
 
+
 }
+

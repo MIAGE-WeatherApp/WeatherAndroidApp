@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/imgbck"
     tools:context=".view.SignInActivity">
 
     <EditText
@@ -11,35 +12,59 @@
         android:layout_width="227dp"
         android:layout_height="61dp"
         android:ems="10"
+        android:hint="E-mail address"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.268" />
+        app:layout_constraintVertical_bias="0.347" />
 
     <EditText
         android:id="@+id/LogPwdId"
-        android:layout_width="226dp"
-        android:layout_height="42dp"
+        android:layout_width="225dp"
+        android:layout_height="59dp"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LogEmailId"
-        app:layout_constraintVertical_bias="0.087" />
+        app:layout_constraintVertical_bias="0.046" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/SignInId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="584dp"
+        android:background="@drawable/bubble"
+        android:focusable="true"
+        android:paddingStart="25dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="25dp"
+        android:paddingBottom="15dp"
+        android:text="Connection"
+        android:textAllCaps="false"
+        android:textColor="#75FF4081"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/LogBtnId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Send"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.435"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LogPwdId"
         app:layout_constraintVertical_bias="0.21" />
@@ -49,6 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pas encore inscrit ? Je m'inscris !"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.463"
@@ -56,11 +82,4 @@
         app:layout_constraintTop_toBottomOf="@+id/LogBtnId"
         app:layout_constraintVertical_bias="0.271" />
 
-    <TextView
-        android:id="@+id/LogTitleId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Connexion"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="64dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

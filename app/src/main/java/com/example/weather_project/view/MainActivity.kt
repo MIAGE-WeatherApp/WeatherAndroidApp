@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import com.example.weather_project.R
 import kotlinx.android.synthetic.main.activity_main.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +24,11 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.FRANCE)
+        val currentDate = sdf.format(Date())
+        weatherDateId.text = currentDate
+
         mainBtnId.setOnClickListener {
 
             RequestPermission()
@@ -45,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
         ){
             //Launch WeatherMenu in the Main One
-            val weathertempIntent = Intent(this, Weather_Display::class.java)
+            val weathertempIntent = Intent(this, WeatherActivity::class.java)
             startActivity(weathertempIntent)
             return true
         }
