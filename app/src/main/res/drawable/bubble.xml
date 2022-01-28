@@ -13,7 +13,7 @@
 
     <!--Stroke size and color-->
     <stroke android:width="3dp"
-        android:color="@color/white" />
+        android:color="#FFFFFF" />
 
     <!--Fill Color of the Button-->
     <gradient android:angle="-90"
