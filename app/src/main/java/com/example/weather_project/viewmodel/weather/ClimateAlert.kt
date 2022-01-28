@@ -7,7 +7,7 @@ class ClimateAlert(
     _name_value: String,
 
     @NonNull
-    _value: StateClimatName
+    _value: ClimateViewModel
 ) {
 
 

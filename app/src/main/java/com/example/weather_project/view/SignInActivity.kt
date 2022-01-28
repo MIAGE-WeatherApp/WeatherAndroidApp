@@ -70,7 +70,9 @@ class SignInActivity : AppCompatActivity() {
                 Status.SUCCESS -> {
                     if (it.data != null) {
                         startActivity(Intent(this, WeatherActivity::class.java))
+                        
                         createNotificationChannel(it.data.user_name)
+                        
                         Toast.makeText(
                             this,
                             "HELLO " + it.data.user_name + " !!!",
@@ -124,7 +126,5 @@ class SignInActivity : AppCompatActivity() {
                 .setContentIntent(pendingIntent)
         }
         notificationManager.notify(1234, builder.build())
-
-
     }
 }
