@@ -112,32 +112,25 @@ class WeatherActivity : AppCompatActivity() {
     //ICI UNIQUEMENT LES RECUPERATIONS PAS DE PRISE DE VALEUR DES MODELVIEW DONC LA PROCHAINE FOIS PRENDRE CONNAISSANCE CA COMME LES UNITES
     @SuppressLint("ResourceType")
     fun getCurrentWeatherbyLocation(lat: Double?, long: Double?) {
+
         //Pour la température en celsius
-
         val tempGeo = lat?.let { long?.let { it1 -> weatherViewModel.getGeoTemp(it, it1) } }
-        Log.d("TEMPERATURE DE CHEZ MOI", "$tempGeo°C")
-        weatherTempId.text = tempGeo.toString() + "°C"
+        weatherTempId.text = (tempGeo.toString() + "°C")
 
-        // Changer le .text
         val tempMinGeo = lat?.let { long?.let { it1 -> weatherViewModel.getGeoTempMin(it, it1) } }
-        Log.d("TEMPERATURE MIN DE CHEZ MOI", "$tempMinGeo°C")
-        //weatherTempId.text = tempGeo.toString() + "°C"
+        weatherTempMinId.text = (tempMinGeo.toString() + "°C")
 
-        // Changer le .text
         val tempMaxGeo = lat?.let { long?.let { it1 -> weatherViewModel.getGeoTempMax(it, it1) } }
-        Log.d("TEMPERATURE MAX DE CHEZ MOI", "$tempMaxGeo°C")
-        //weatherTempId.text = tempGeo.toString() + "°C"
+        weatherTempMaxId.text = (tempMaxGeo.toString() + "°C")
 
-        // Changer le .text
         val geoSunrise =
             lat?.let { long?.let { it1 -> weatherViewModel.getGeoTempSunrise(it, it1) } }
-        Log.d("Sunrise :", "$geoSunrise")
-        //weatherTempId.text = tempGeo.toString() + "°C"
+        weatherSunriseId.text = geoSunrise.toString()
 
         // Changer le .text
         val geoSunset = lat?.let { long?.let { it1 -> weatherViewModel.getGeoTempSunset(it, it1) } }
         Log.d("Sunset :", "$geoSunset")
-        //weatherTempId.text = tempGeo.toString() + "°C"
+        weatherSunriseId2.text = tempGeo.toString()
 
         //Pour l'état du climat
         val ClimatGeo =
@@ -185,29 +178,23 @@ class WeatherActivity : AppCompatActivity() {
                 try {
                     //GET TEMPERATURE BY CITY
                     val tempCity = query?.let { weatherViewModel.getCityTemp(it) }
-                    weatherTempId.text = "$tempCity°C"
+                    weatherTempId.text = ("$tempCity°C")
 
                     //GET TEMPERATURE MIN BY CITY
-                    // CHANGER le .text
                     val tempCityMin = query?.let { weatherViewModel.getCityTempMin(it) }
-                    // weatherTempId.text = "$tempCityMin°C"
-                    //Log.d("Temp_Min", "$tempCityMin°C")
+                    weatherTempMinId.text = ("$tempCityMin°C")
 
                     //GET TEMPERATURE MIN BY CITY
-                    // CHANGER le .text
                     val tempCityMax = query?.let { weatherViewModel.getCityTempMax(it) }
-                    // weatherTempId.text = "$tempCityMax°C"
-                    //Log.d("Temp_Max", "$tempCityMax°C")
+                    weatherTempMaxId.text = ("$tempCityMax°C")
 
                     //GET SUNRISE BY CITY
-                    // CHANGER le .text
                     val sunrise = query?.let { weatherViewModel.getCitySunrise(it) }
-                    // weatherTempId.text = "$sunrise"
+                    weatherSunriseId.text = "$sunrise"
 
                     //GET SUNRISE BY CITY
-                    // CHANGER le .text
                     val sunset = query?.let { weatherViewModel.getCitySunset(it) }
-                    // weatherTempId.text = "$sunset"
+                    weatherSunriseId2.text = "$sunset"
 
                     //GET CITYNAME
                     val cityName = query

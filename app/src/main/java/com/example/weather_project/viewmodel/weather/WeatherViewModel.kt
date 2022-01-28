@@ -17,6 +17,8 @@ class WeatherViewModel() : ViewModel() {
 
     private val urlAPI = "d2c3d372129d6b440e76ab9b8fadc9f3"
 
+    private val sdf = SimpleDateFormat("hh:mm a", Locale.FRANCE)
+
     init {
         this.weatherAPI = WeatherAPI(this.urlAPI)
     }
@@ -161,21 +163,18 @@ class WeatherViewModel() : ViewModel() {
     }
 
     fun getCitySunrise(cityName: String): String {
-        val sdf = SimpleDateFormat("hh:mm a", Locale.FRANCE)
         val main = weatherAPI.getCurrentWeatherAPI(cityName).getJSONObject("sys")
         val sunrise = sdf.format(main.getInt("sunrise") * 1000L)
         return sunrise
     }
 
     fun getCitySunset(cityName: String): String {
-        val sdf = SimpleDateFormat("hh:mm a", Locale.FRANCE)
         val main = weatherAPI.getCurrentWeatherAPI(cityName).getJSONObject("sys")
         val sunset = sdf.format(main.getInt("sunset") * 1000L)
         return sunset
     }
 
     fun getGeoTempSunrise(lat: Double, long: Double): String {
-        val sdf = SimpleDateFormat("hh:mm a", Locale.FRANCE)
         val currentInfo =
             this.getAPI().callFirstAPI(lat, long).getJSONArray("daily").getJSONObject(2)
         val geoSunrise = sdf.format(currentInfo.getInt("sunrise") * 1000L)
@@ -183,11 +182,9 @@ class WeatherViewModel() : ViewModel() {
     }
 
     fun getGeoTempSunset(lat: Double, long: Double): String {
-        val sdf = SimpleDateFormat("hh:mm a", Locale.FRANCE)
         val currentInfo =
             this.getAPI().callFirstAPI(lat, long).getJSONArray("daily").getJSONObject(2)
         val geoSunset = sdf.format(currentInfo.getInt("sunset") * 1000L)
         return geoSunset
     }
-
 }
