@@ -130,7 +130,7 @@ class WeatherActivity : AppCompatActivity() {
         // Changer le .text
         val geoSunset = lat?.let { long?.let { it1 -> weatherViewModel.getGeoTempSunset(it, it1) } }
         Log.d("Sunset :", "$geoSunset")
-        weatherSunriseId2.text = tempGeo.toString()
+        weatherSunriseId2.text = geoSunset.toString()
 
         //Pour l'état du climat
         val ClimatGeo =
