@@ -1,10 +1,9 @@
-Yastuky — Aujourd’hui à 20:26
 # WeatherAndroidApp
 
 
 ## But du projet
 
-Le projet a pour but la création d'une application mobile qui affiche la météo via l'utilisation d'une API pour récupérer les données.
+Le projet a pour but la création d'une application mobile qui affiche la météo via l'utilisation d'une API pour récupérer les données. Vous trouverez dans ce repository git l'ensemble du data model (partie obligatoire) ainsi que la partie bonus sur le développement de l'application sous Android Mobile en langage Kotlin.
 
 
 ## Equipe & rôles
@@ -14,7 +13,7 @@ Notre équipe est composée de :
 1. **RAKOTONIRINA Onitiana**
 1. **TANG François**
 
-en M1 MIAGE APP à l'Université de Paris (Descartes).
+en M1 MIAGE FA à l'Université de Paris (Descartes).
 
 ## Documentation
 
