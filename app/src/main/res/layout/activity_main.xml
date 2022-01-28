@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bck"
+    android:background="@drawable/imgbck1"
     tools:context=".view.MainActivity">
 
 
@@ -14,25 +14,26 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/mangati"
         android:text="WEATH'APP !"
-        android:textColor="#FFFFFF"
+        android:textColor="#7CEC3885"
         android:textSize="100px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.402" />
+        app:layout_constraintVertical_bias="0.367" />
 
     <TextView
         android:id="@+id/mainSignInId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign in"
-        android:textColor="#FFFFFF"
+        android:textColor="#7CEC3885"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainBtnId"
-        app:layout_constraintVertical_bias="0.056" />
+        app:layout_constraintVertical_bias="0.087" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/mainBtnId"
@@ -40,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="332dp"
+        android:layout_marginBottom="324dp"
         android:background="@drawable/bubble"
         android:focusable="true"
         android:paddingStart="25dp"
@@ -49,7 +50,7 @@
         android:paddingBottom="15dp"
         android:text="LET'S GO ON !"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="#75FF4081"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +58,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/weatherDateId"
         android:layout_width="253dp"
         android:layout_height="38dp"
         android:layout_marginTop="260dp"

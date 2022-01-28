@@ -212,8 +212,10 @@ class WeatherActivity : AppCompatActivity() {
                     //GET CITYNAME
                     val cityName = query
                     if (cityName != null) {
-                        weatherTitleId.text = cityName.uppercase()
+                        weatherTitleId.text =
+                            cityName.replaceFirstChar { cityName.substring(0, 1).uppercase() }
                     }
+                    
                     //GET ICONCLIMAT
                     Glide.with(this@WeatherActivity)
                         .load(query?.let { weatherViewModel.getCityIconClimat(it) })

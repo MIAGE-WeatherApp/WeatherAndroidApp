@@ -4,89 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/imgbck"
     tools:context=".view.SignupActivity">
 
-    <TextView
-        android:id="@+id/LogupTitleId"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/SignInId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="584dp"
+        android:background="@drawable/bubble"
+        android:focusable="true"
+        android:paddingStart="25dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="25dp"
+        android:paddingBottom="15dp"
         android:text="Inscription"
-        app:layout_constraintBottom_toTopOf="@+id/LogupTxt1Id"
+        android:textAllCaps="false"
+        android:textColor="#75FF4081"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/LogupTxt1Id"
-        android:layout_width="330dp"
-        android:layout_height="37dp"
-        android:layout_marginBottom="24dp"
-        android:hint="hint"
+        android:layout_width="335dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="12dp"
+        android:hint="E-mail address"
         app:layout_constraintBottom_toTopOf="@+id/LogupTxt2Id"
-        tools:layout_editor_absoluteX="40dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.539"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/LogupTxt2Id"
-        android:layout_width="330dp"
-        android:layout_height="37dp"
-        android:layout_marginBottom="20dp"
-        android:hint="hint"
+        android:layout_width="332dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="12dp"
+        android:hint="Birthdate"
         app:layout_constraintBottom_toTopOf="@+id/LogupTxt3Id"
-        tools:layout_editor_absoluteX="38dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/LogupTxt3Id"
-        android:layout_width="330dp"
-        android:layout_height="37dp"
-        android:layout_marginBottom="16dp"
-        android:hint="hint"
+        android:layout_width="332dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="12dp"
+        android:hint="Login"
         app:layout_constraintBottom_toTopOf="@+id/LogupTxt4Id"
-        tools:layout_editor_absoluteX="38dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/LogupTxt4Id"
-        android:layout_width="330dp"
-        android:layout_height="37dp"
-        android:layout_marginBottom="112dp"
-        android:hint="hint"
+        android:layout_width="331dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="52dp"
+        android:hint="Password"
         app:layout_constraintBottom_toTopOf="@+id/LogupBtnId"
-        tools:layout_editor_absoluteX="38dp" />
-
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RadioButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/radioButton2"
-        app:layout_constraintHorizontal_bias="0.477"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.472" />
-
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RadioButton"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.804"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.472" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/LogupBtnId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="284dp"
-        android:text="Button"
+        android:text="Send"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.727" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
