@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:background="@drawable/bck"
         android:layout_height="match_parent"
-        tools:context=".view.Weather_Display">
+        tools:context=".view.WeatherActivity">
 
 
         <SearchView

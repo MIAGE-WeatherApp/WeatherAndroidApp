@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
         ){
             //Launch WeatherMenu in the Main One
-            val weathertempIntent = Intent(this, Weather_Display::class.java)
+            val weathertempIntent = Intent(this, WeatherActivity::class.java)
             startActivity(weathertempIntent)
             return true
         }

@@ -61,7 +61,7 @@ class SignInActivity : AppCompatActivity() {
             when (it.status) {
                 Status.SUCCESS -> {
                     if (it.data != null) {
-                        startActivity(Intent(this, Weather_Display::class.java))
+                        startActivity(Intent(this, WeatherActivity::class.java))
                         Toast.makeText(
                             this,
                             "HELLO " + it.data.user_name + " !!!",
